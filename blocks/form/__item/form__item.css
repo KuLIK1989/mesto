@@ -10,6 +10,10 @@
    line-height: 17px;
    color: #000000;
    padding-bottom: 5px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+
 }
 
 .form__item:last-of-type {
