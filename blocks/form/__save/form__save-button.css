@@ -11,7 +11,9 @@
    font-size: 18px;
    line-height: 122%;
    text-align: center;
-
+}
+.form__save-button:hover {
+   opacity: 0.8;
 }
 
 @media screen and (max-width:520px) {
