@@ -23,7 +23,7 @@ function savePopup() {
 function formSubmitHandler(evt) {
    evt.preventDefault();
    userName.textContent = nameInput.value;
-   aboutUser.textContent = jobInput.value;   
+   aboutUser.textContent = jobInput.value;
 }
 
 // добавить слушатели 
