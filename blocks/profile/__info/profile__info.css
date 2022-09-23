@@ -18,8 +18,10 @@
    .profile__info {
       max-width: 282px;
       column-gap: 10px;
-      row-gap: 14px;
+      row-gap: 7px;
       grid-template-columns: 1fr 18px;
       justify-items: center;
+      margin-left: 22px;
+      margin-bottom: 30px;
    }
 }
