@@ -25,53 +25,15 @@
             <button type="button" class="profile__add-button"></button>
          </div>
          <section class="cards">
-            <div class="card">
-               <!--не стал делать списком т.к не совсем понимаю как это реализовать. сделать cards как ul, а card как li?-->
-               <img src="./image/card/kirill-pershin-1088404-unsplash__KARACH.png" alt="фото карачаевска"
-                  class="card__image">
-               <div class="card__name">
-                  <h3 class="card__title">Карачаевск</h3>
-                  <button type="button" class="card__button-like"></button>
+            <template id="template">
+               <div class="card">
+                  <img alt="фото" class="card__image">
+                  <div class="card__name">
+                     <h3 class="card__title"></h3>
+                     <button type="button" class="card__button-like"></button>
+                  </div>
                </div>
-            </div>
-            <div class="card">
-               <img src="./image/card/kirill-pershin-1404681-unsplash_mountain.png" alt="фото горы эльбрус"
-                  class="card__image">
-               <div class="card__name">
-                  <h3 class="card__title">Гора Эльбрус</h3>
-                  <button type="button" class="card__button-like"></button>
-               </div>
-            </div>
-            <div class="card">
-               <img src="./image/card/kirill-pershin-1556355-unsplashdombai.png" alt="фото домбая" class="card__image">
-               <div class="card__name">
-                  <h3 class="card__title">Домбай</h3>
-                  <button type="button" class="card__button-like"></button>
-               </div>
-            </div>
-            <div class="card">
-               <img src="./image/card/kirill-pershin-1404681-unsplash_mountain.png" alt="фото горы эльбрус"
-                  class="card__image">
-               <div class="card__name">
-                  <h3 class="card__title">Гора Эльбрус</h3>
-                  <button type="button" class="card__button-like"></button>
-               </div>
-            </div>
-            <div class="card">
-               <img src="./image/card/kirill-pershin-1556355-unsplashdombai.png" alt="фото домбая" class="card__image">
-               <div class="card__name">
-                  <h3 class="card__title">Домбай</h3>
-                  <button type="button" class="card__button-like"></button>
-               </div>
-            </div>
-            <div class="card">
-               <img src="./image/card/kirill-pershin-1088404-unsplash__KARACH.png" alt="фото карачаевска"
-                  class="card__image">
-               <div class="card__name">
-                  <h3 class="card__title">Карачаево-Ч...</h3>
-                  <button type="button" class="card__button-like"></button>
-               </div>
-            </div>
+            </template>
          </section>
       </main>
       <footer class="footer">
