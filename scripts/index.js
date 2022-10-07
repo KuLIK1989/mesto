@@ -72,6 +72,7 @@ const handleSubmitItem = (evt) => {
    evt.preventDefault();
    const item = createCardNode(inputCardName.value, inputCardLink.value);
    container.prepend(item);
+   closePopup(popupCards);
 }
 render();
 
