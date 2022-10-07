@@ -36,13 +36,13 @@ const render = () => {
       const currentCard = createCardNode(item.name, item.link);
       container.append(currentCard);
    });
-   CardsFormEdit.addEventListener('click',handleSubmitItem);
+   CardsFormEdit.addEventListener('click', handleSubmitItem);
 };
 const createCardNode = (name, link) => {
    const currentCard = template.content.cloneNode(true);
    const placeName = currentCard.querySelector('.card__title');
    const placeLink = currentCard.querySelector('.card__image');
-   
+
 
    const deleteBtn = currentCard.querySelector('.card__button-trash');
    deleteBtn.addEventListener('click', handleDeleteCard);
@@ -51,6 +51,14 @@ const createCardNode = (name, link) => {
    placeName.textContent = name;
    placeLink.src = link;
    placeName.alt = name;
+
+   placeLink.addEventListener('click', () => {
+      imageTitle.textContent = name;
+      openImage.src = link;
+      openImage.alt = name;
+      openPopup(popupImage);
+
+   })
 
    return currentCard;
 }
@@ -62,8 +70,8 @@ const handleDeleteCard = (e) => {
 //функция добавления card
 const handleSubmitItem = (evt) => {
    evt.preventDefault();
-   const item  = createCardNode (inputCardName.value,inputCardLink.value);
-   container.prepend (item);    
+   const item = createCardNode(inputCardName.value, inputCardLink.value);
+   container.prepend(item);
 }
 render();
 
@@ -79,8 +87,13 @@ likeButton.forEach((button) => {
 
 //popupcards
 const popupOpenBtnCard = document.querySelector('.profile__add-button');
-
 const popupCloseBtnCard = popupCards.querySelector('.popup__close-button');
+const popupImage = document.querySelector('#popup-image');
+const openImage = popupImage.querySelector('.popup__image');
+const closeBtnImage = popupImage.querySelector('.popup__close-button');
+const imageTitle = popupImage.querySelector('.popup__description')
+
+
 
 
 
@@ -110,6 +123,7 @@ function closePopup(popup) {
 }
 popupCloseBtnCard.addEventListener('click', () => { closePopup(popupCards) });
 popUpCloseButton.addEventListener('click', () => { closePopup(popup) });
+closeBtnImage.addEventListener('click', () => { closePopup(popupImage) });
 
 
 function formSubmitHandler(evt) {
