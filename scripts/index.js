@@ -26,33 +26,43 @@ const initialCards = [
 ];
 const container = document.querySelector('.cards');
 const template = document.querySelector('.template');
-const popupCards = document.querySelector('#popup-cards');
-const inputCardName = popupCards.querySelector('#name-place');
-const inputCardLink = popupCards.querySelector('#link-place');
-const CardsFormEdit = popupCards.querySelector('.form__save-button');
+const cardsPopup = document.querySelector('#popup-cards');
+const inputCardName = cardsPopup.querySelector('#name-place');
+const inputCardLink = cardsPopup.querySelector('#link-place');
+const cardsForm = document.forms['cards-form'];
+
 
 const render = () => {
    initialCards.forEach((item) => {
       const currentCard = createCardNode(item.name, item.link);
       container.append(currentCard);
    });
-   CardsFormEdit.addEventListener('click', handleSubmitItem);
+   cardsForm.addEventListener('submit', handleSubmitItem);
 };
 const createCardNode = (name, link) => {
    const currentCard = template.content.cloneNode(true);
    const placeName = currentCard.querySelector('.card__title');
-   const placeLink = currentCard.querySelector('.card__image');
+   const cardImage = currentCard.querySelector('.card__image');
 
-
+   //delete btn
    const deleteBtn = currentCard.querySelector('.card__button-trash');
    deleteBtn.addEventListener('click', handleDeleteCard);
 
+   //Огромное спасибо за просто великолепное ревью!Всё очень доступно обьяснено!
+   //Некоторые фичи как универсальная функция закрытия крестиков - просто пушка!
+
+   //like btn
+   const likeBtn = currentCard.querySelector('.card__button-like');
+   likeBtn.addEventListener('click', () => {
+      likeBtn.classList.toggle("card__button-like_active");
+   });
+
 
    placeName.textContent = name;
-   placeLink.src = link;
-   placeName.alt = name;
+   cardImage.src = link;
+   cardImage.alt = name;
 
-   placeLink.addEventListener('click', () => {
+   cardImage.addEventListener('click', () => {
       imageTitle.textContent = name;
       openImage.src = link;
       openImage.alt = name;
@@ -62,33 +72,26 @@ const createCardNode = (name, link) => {
 
    return currentCard;
 }
+//like card
+
 //функция удаления card
 const handleDeleteCard = (e) => {
-   const currentell = e.target.closest('.card');
-   currentell.remove();
+   const currentElement = e.target.closest('.card');
+   currentElement.remove();
 }
 //функция добавления card
 const handleSubmitItem = (evt) => {
    evt.preventDefault();
    const item = createCardNode(inputCardName.value, inputCardLink.value);
    container.prepend(item);
-   closePopup(popupCards);
+   evt.target.reset()
+   closePopup(cardsPopup);
 }
 render();
 
-//кнопка like
-const likeButton = Array.from(document.querySelectorAll(".card__button-like"));
-likeButton.forEach((button) => {
-   button.addEventListener("click", () => {
-      button.classList.toggle("card__button-like_active");
-   });
-});
-
-
-
 //popupcards
 const popupOpenBtnCard = document.querySelector('.profile__add-button');
-const popupCloseBtnCard = popupCards.querySelector('.popup__close-button');
+const popupCloseBtnCard = cardsPopup.querySelector('.popup__close-button');
 const popupImage = document.querySelector('#popup-image');
 const openImage = popupImage.querySelector('.popup__image');
 const closeBtnImage = popupImage.querySelector('.popup__close-button');
@@ -100,40 +103,42 @@ const imageTitle = popupImage.querySelector('.popup__description')
 
 
 // получить элементы
-const popeupOpenButton = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('#popup-profile');
-const popUpCloseButton = popup.querySelector('.popup__close-button');
-const popeupSaveButton = popup.querySelector('#form-sv-btn');
-let formElement = popup.querySelector('#form-edit');
-let nameInput = formElement.querySelector('#name');
-let jobInput = formElement.querySelector('#status');
+const profileOpenButton = document.querySelector('.profile__edit-button');
+const profilePopup = document.querySelector('#popup-profile');
+const profileCloseButton = profilePopup.querySelector('.popup__close-button');
+const profileForm = document.forms["profile-form"];
+const nameInput = profileForm.querySelector('#name');
+const jobInput = profileForm.querySelector('#status');
 const userName = document.querySelector('.profile__name');
 const aboutUser = document.querySelector('.profile__status');
+
 
 
 //получить функцию открывания и закрывания popup
 function openPopup(popup) {
    popup.classList.add('popup_opened');
 }
-popupOpenBtnCard.addEventListener('click', () => { openPopup(popupCards) });
-popeupOpenButton.addEventListener('click', () => { openPopup(popup) });
+popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
+profileOpenButton.addEventListener('click', () => { openPopup(profilePopup) });
 
-
+//function close btn
 function closePopup(popup) {
    popup.classList.remove('popup_opened');
 }
-popupCloseBtnCard.addEventListener('click', () => { closePopup(popupCards) });
-popUpCloseButton.addEventListener('click', () => { closePopup(popup) });
-closeBtnImage.addEventListener('click', () => { closePopup(popupImage) });
+const closeButtons = document.querySelectorAll('.popup__close-button');
+closeButtons.forEach((button) => {
+   const popup = button.closest('.popup');
+   button.addEventListener('click', () => closePopup(popup));
+});
 
-
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
    evt.preventDefault();
    userName.textContent = nameInput.value;
    aboutUser.textContent = jobInput.value;
-   closePopup(popup)
+   evt.target.reset()
+   closePopup(profilePopup)
 }
 
 // добавить слушатели 
 
-formElement.addEventListener('submit', formSubmitHandler);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
