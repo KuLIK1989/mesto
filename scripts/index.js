@@ -119,7 +119,11 @@ function openPopup(popup) {
    popup.classList.add('popup_opened');
 }
 popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
-profileOpenButton.addEventListener('click', () => { openPopup(profilePopup) });
+profileOpenButton.addEventListener('click', () => {
+   openPopup(profilePopup)
+   nameInput.value = userName.textContent;
+   jobInput.value = aboutUser.textContent;
+});
 
 //function close btn
 function closePopup(popup) {
