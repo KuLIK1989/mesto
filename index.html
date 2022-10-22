@@ -47,8 +47,17 @@
             <form name="profile-form" id="form-edit" class="form">
                <h3 class="form__title">Редактировать профиль</h3>
                <fieldset class="form__edit">
-                  <input class="form__item" id="name" name="name" type="text" placeholder="Имя">
-                  <input class="form__item" id="status" name="status" type="text" placeholder="Статус">
+                  <!--TODO- ДОБАВИТЬ ЛЭЙБЛЫ ВСЕМ ИНПУТАМ -->
+                  <input required minlength="2" maxlength="40" class="form__item" id="name" name="name" type="text"
+                     placeholder="Имя">
+                     <!--TODO ДОБАВИТЬ СТИЛB + СТИЛЬ С КЛАССОМ INVISIBLE-->
+                  <span class="error">что-то</span>
+
+                  <!--TODO- ДОБАВИТЬ ЛЭЙБЛЫ ВСЕМ ИНПУТАМ -->
+                  <input required minlength="2" maxlength="200" class="form__item" id="status" name="status" type="text"
+                     placeholder="Статус">
+                  <span class="error">что-то</span>
+
                </fieldset>
                <button name="form-save-btn" id="form-save-btn" class="form__save-button">Сохранить</button>
             </form>
@@ -60,10 +69,19 @@
             <form name="cards-form" id="form-edite" class="form">
                <h3 class="form__title">Новое место</h3>
                <fieldset class="form__edit">
-                  <input class="form__item" id="name-place" name="name-place" type="text" placeholder="Название">
-                  <input class="form__item" id="link-place" name="link-place" type="text"
+                  
+                  <!--TODO- ДОБАВИТЬ ЛЭЙБЛЫ ВСЕМ ИНПУТАМ -->
+                  <input required minlength="2" maxlength="30" class="form__item" id="name-place" name="name-place"
+                     type="text" placeholder="Название">
+                  <span class="error"></span> 
+
+                  <!--TODO- ДОБАВИТЬ ЛЭЙБЛЫ ВСЕМ ИНПУТАМ тайп для инпута - урл -->
+                  <input required class="form__item" id="link-place" name="link-place" type="text"
                      placeholder="Ссылка на картинку">
+                  <span class="error"></span>
+
                </fieldset>
+               <!--todo добавить класс enable для кнопки-->
                <button name="form-save-btn" id="form-sv-btn" class="form__save-button">Сохранить</button>
             </form>
          </div>
@@ -78,6 +96,7 @@
 
    </div>
    <script type="text/javascript" src="./scripts/index.js"></script>
+   <script type="text/javascript" src="./scripts/validate.js"></script>
 </body>
 
 </html>

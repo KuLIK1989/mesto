@@ -48,8 +48,6 @@ const createCardNode = (name, link) => {
    const deleteBtn = currentCard.querySelector('.card__button-trash');
    deleteBtn.addEventListener('click', handleDeleteCard);
 
-   //Огромное спасибо за просто великолепное ревью!Всё очень доступно обьяснено!
-   //Некоторые фичи как универсальная функция закрытия крестиков - просто пушка!
 
    //like btn
    const likeBtn = currentCard.querySelector('.card__button-like');
