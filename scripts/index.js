@@ -32,6 +32,7 @@ const inputCardLink = cardsPopup.querySelector('#link-place');
 const cardsForm = document.forms['cards-form'];
 
 
+
 const render = () => {
    initialCards.forEach((item) => {
       const currentCard = createCardNode(item.name, item.link);
@@ -109,12 +110,17 @@ const nameInput = profileForm.querySelector('#name');
 const jobInput = profileForm.querySelector('#status');
 const userName = document.querySelector('.profile__name');
 const aboutUser = document.querySelector('.profile__status');
+//Все попапы на странице
+const popUps = document.querySelectorAll('.popup');
+//перебрать попапы + добавить функцию закрытия по оверлею
+popUps.forEach((item) => closePopupByOverlay(item));
 
 
 
 //получить функцию открывания и закрывания popup
 function openPopup(popup) {
    popup.classList.add('popup_opened');
+   document.addEventListener('keydown', closePopupByEscape)
 }
 popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
 profileOpenButton.addEventListener('click', () => {
@@ -132,6 +138,24 @@ closeButtons.forEach((button) => {
    const popup = button.closest('.popup');
    button.addEventListener('click', () => closePopup(popup));
 });
+
+
+function closePopupByEscape(evt) {
+   if (evt.key === "Escape") {
+      closePopup(document.querySelector('.popup_opened'))
+   }
+}
+
+function closePopupByOverlay(item) {
+   item.addEventListener('click', function (e) {
+      if (e.target === e.currentTarget) {
+         closePopup(item)
+      };
+   });
+};
+
+
+
 
 function handleProfileFormSubmit(evt) {
    evt.preventDefault();
