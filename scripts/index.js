@@ -80,6 +80,8 @@ const handleDeleteCard = (e) => {
 }
 //функция добавления card
 const handleSubmitItem = (evt) => {
+   evt.submitter.classList.add (setting.inactiveButtonClass);
+   evt.submitter.disabled = true;
    evt.preventDefault();
    const item = createCardNode(inputCardName.value, inputCardLink.value);
    container.prepend(item);
@@ -110,6 +112,7 @@ const nameInput = profileForm.querySelector('#name');
 const jobInput = profileForm.querySelector('#status');
 const userName = document.querySelector('.profile__name');
 const aboutUser = document.querySelector('.profile__status');
+const btnSubmitCards = profileForm.querySelector('.form__save-button')
 //Все попапы на странице
 const popUps = document.querySelectorAll('.popup');
 //перебрать попапы + добавить функцию закрытия по оверлею
@@ -120,18 +123,20 @@ popUps.forEach((item) => closePopupByOverlay(item));
 //получить функцию открывания и закрывания popup
 function openPopup(popup) {
    popup.classList.add('popup_opened');
-   document.addEventListener('keydown', closePopupByEscape)
-}
-popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
+   document.addEventListener('keydown', closePopupByEscape);
+};
+popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup)});
 profileOpenButton.addEventListener('click', () => {
    openPopup(profilePopup)
    nameInput.value = userName.textContent;
    jobInput.value = aboutUser.textContent;
+   
 });
 
 //function close btn
 function closePopup(popup) {
    popup.classList.remove('popup_opened');
+   document.removeEventListener('keydown', closePopupByEscape)
 }
 const closeButtons = document.querySelectorAll('.popup__close-button');
 closeButtons.forEach((button) => {

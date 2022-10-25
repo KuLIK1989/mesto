@@ -3,7 +3,7 @@ const setting = {
    inputSelector: '.form__item',
    submitButtonSelector: '.form__save-button ',
    inactiveButtonClass: 'form__save-button_disabled',
-   inputErrorClass: 'form__input_error',
+   inputErrorClass: 'form__item_error',
    errorClass: 'error_visible'
 }
 const setEventListeners = (formElement, setting) => {
@@ -19,7 +19,7 @@ const setEventListeners = (formElement, setting) => {
 const enableValidation = (setting) => {
    const formList = Array.from(document.querySelectorAll(setting.formSelector));
    formList.forEach((formElement) => {
-      formElement.addEventListener('submit', (evt) => {
+      formElement.addEventListener('submit', function (evt) {
          evt.preventDefault();
       });
       setEventListeners(formElement, setting);
@@ -53,12 +53,12 @@ const hideInputError = (formElement, inputElement, setting) => {
 
 
 function addClassError(inputElement, setting) {
-   inputElement.classList.remove(setting.inputErrorClass);
+   inputElement.classList.add(setting.inputErrorClass);
  };
 function removeClassError(inputElement, setting) {
    inputElement.classList.remove(setting.inputErrorClass);
  };
- function addValidationErrors(errorElement, params, errorMessage) {
+ function addValidationErrors(errorElement, setting, errorMessage) {
    errorElement.classList.add(setting.errorClass);
    errorElement.textContent = errorMessage;
  }
