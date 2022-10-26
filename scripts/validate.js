@@ -6,13 +6,15 @@ const setting = {
    inputErrorClass: 'form__item_error',
    errorClass: 'error_visible'
 }
+//!Спасибо за ценные подсказки!именно в этом коде у меня больше всего вопросов и не пониманий было.
 const setEventListeners = (formElement, setting) => {
    const inputList = Array.from(formElement.querySelectorAll(setting.inputSelector));
    const buttonElement = formElement.querySelector(setting.submitButtonSelector);
+   toggleButtonState(buttonElement, setting, true)
+   formElement.addEventListener('reset', () => {
+      toggleButtonState(buttonElement, setting, true)
+   });
    inputList.forEach((inputElement) => {
-      formElement.addEventListener('reset', () => {
-         toggleButtonState(buttonElement, setting, true)
-      });
       inputElement.addEventListener('input', () => {
          checkValidity(formElement, inputElement, setting);
          toggleButtonState(buttonElement, setting, hasInvalidInput(inputList))

@@ -80,8 +80,6 @@ const handleDeleteCard = (e) => {
 }
 //функция добавления card
 const handleSubmitItem = (evt) => {
-   evt.submitter.classList.add(setting.inactiveButtonClass);
-   evt.submitter.disabled = true;
    evt.preventDefault();
    const item = createCardNode(inputCardName.value, inputCardLink.value);
    container.prepend(item);
@@ -113,9 +111,9 @@ const aboutUser = document.querySelector('.profile__status');
 const btnSubmitCards = profileForm.querySelector('.form__save-button')
 const popUps = document.querySelectorAll('.popup');
 
-popUps.forEach((popup)=>{
+popUps.forEach((popup) => {
    popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup__opened')){
+      if (evt.target.classList.contains('popup_opened')) {
          closePopup(popup)
       }
       if (evt.target.classList.contains('popup__close-button')) {
