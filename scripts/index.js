@@ -92,10 +92,8 @@ render();
 
 //popupcards
 const popupOpenBtnCard = document.querySelector('.profile__add-button');
-const popupCloseBtnCard = cardsPopup.querySelector('.popup__close-button');
 const popupImage = document.querySelector('#popup-image');
 const openImage = popupImage.querySelector('.popup__image');
-const closeBtnImage = popupImage.querySelector('.popup__close-button');
 const imageTitle = popupImage.querySelector('.popup__description')
 
 
@@ -113,10 +111,18 @@ const jobInput = profileForm.querySelector('#status');
 const userName = document.querySelector('.profile__name');
 const aboutUser = document.querySelector('.profile__status');
 const btnSubmitCards = profileForm.querySelector('.form__save-button')
-//Все попапы на странице
 const popUps = document.querySelectorAll('.popup');
-//перебрать попапы + добавить функцию закрытия по оверлею
-popUps.forEach((item) => closePopupByOverlay(item));
+
+popUps.forEach((popup)=>{
+   popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup__opened')){
+         closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__close-button')) {
+         closePopup(popup)
+      }
+   })
+})
 
 
 
@@ -138,30 +144,11 @@ function closePopup(popup) {
    popup.classList.remove('popup_opened');
    document.removeEventListener('keydown', closePopupByEscape);
 }
-const closeButtons = document.querySelectorAll('.popup__close-button');
-closeButtons.forEach((button) => {
-   const popup = button.closest('.popup');
-   button.addEventListener('click', () => closePopup(popup));
-});
-
-
 function closePopupByEscape(evt) {
    if (evt.key === "Escape") {
       closePopup(document.querySelector('.popup_opened'))
    }
 }
-
-function closePopupByOverlay(item) {
-   item.addEventListener('click', function (e) {
-      if (e.target === e.currentTarget) {
-         closePopup(item)
-      };
-   });
-};
-
-
-
-
 function handleProfileFormSubmit(evt) {
    evt.preventDefault();
    userName.textContent = nameInput.value;
