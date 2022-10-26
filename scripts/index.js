@@ -80,7 +80,7 @@ const handleDeleteCard = (e) => {
 }
 //функция добавления card
 const handleSubmitItem = (evt) => {
-   evt.submitter.classList.add (setting.inactiveButtonClass);
+   evt.submitter.classList.add(setting.inactiveButtonClass);
    evt.submitter.disabled = true;
    evt.preventDefault();
    const item = createCardNode(inputCardName.value, inputCardLink.value);
@@ -125,18 +125,18 @@ function openPopup(popup) {
    popup.classList.add('popup_opened');
    document.addEventListener('keydown', closePopupByEscape);
 };
-popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup)});
+popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
 profileOpenButton.addEventListener('click', () => {
    openPopup(profilePopup)
    nameInput.value = userName.textContent;
    jobInput.value = aboutUser.textContent;
-   
+
 });
 
 //function close btn
 function closePopup(popup) {
    popup.classList.remove('popup_opened');
-   document.removeEventListener('keydown', closePopupByEscape)
+   document.removeEventListener('keydown', closePopupByEscape);
 }
 const closeButtons = document.querySelectorAll('.popup__close-button');
 closeButtons.forEach((button) => {

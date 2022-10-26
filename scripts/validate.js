@@ -10,6 +10,9 @@ const setEventListeners = (formElement, setting) => {
    const inputList = Array.from(formElement.querySelectorAll(setting.inputSelector));
    const buttonElement = formElement.querySelector(setting.submitButtonSelector);
    inputList.forEach((inputElement) => {
+      formElement.addEventListener('reset', () => {
+         toggleButtonState(buttonElement, setting, true)
+      });
       inputElement.addEventListener('input', () => {
          checkValidity(formElement, inputElement, setting);
          toggleButtonState(buttonElement, setting, hasInvalidInput(inputList))
@@ -54,18 +57,18 @@ const hideInputError = (formElement, inputElement, setting) => {
 
 function addClassError(inputElement, setting) {
    inputElement.classList.add(setting.inputErrorClass);
- };
+};
 function removeClassError(inputElement, setting) {
    inputElement.classList.remove(setting.inputErrorClass);
- };
- function addValidationErrors(errorElement, setting, errorMessage) {
+};
+function addValidationErrors(errorElement, setting, errorMessage) {
    errorElement.classList.add(setting.errorClass);
    errorElement.textContent = errorMessage;
- }
+}
 function removeValidationError(errorElement, setting) {
    errorElement.textContent = ''
    errorElement.classList.remove(setting.errorClass);
- };
+};
 
 
 
