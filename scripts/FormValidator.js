@@ -1,14 +1,12 @@
-
-
 export class FormValidator {
-   constructor(setting, formElement) {
-     this._setting = setting;
-     this._formElement = formElement;     
-   };
-   _setEventListeners() {
+  constructor(setting, formElement) {
+    this._setting = setting;
+    this._formElement = formElement;
+  };
+  _setEventListeners() {
     this._inputList = Array.from(this._formElement.querySelectorAll(this._setting.inputSelector));
     this._buttonElement = this._formElement.querySelector(this._setting.submitButtonSelector);
-    
+
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkValidity(inputElement);
@@ -46,32 +44,36 @@ export class FormValidator {
     this._removeValidationErrors(errorElement);
   };
 
- 
-   _addClassError(inputElement) {
-     inputElement.classList.add(this._setting.inputErrorClass);
-   };
- 
-   _removeClassError(inputElement) {
-     inputElement.classList.remove(this._setting.inputErrorClass);
-   };
- 
-   _addValidationErrors(errorElement, errorMessage) {
-     errorElement.classList.add(this._setting.errorClass);
-     errorElement.textContent = errorMessage;
-   };
- 
-   _removeValidationErrors(errorElement) {
-     errorElement.textContent = ''
-     errorElement.classList.remove(this._setting.errorClass);
-   };   
- 
-   _toggleButtonState() {
-     if (this._hasInvalidInput()) {
-       this._buttonElement.classList.add(this._setting.inactiveButtonClass);
-       this._buttonElement.setAttribute("disabled",true);
-     } else {
-       this._buttonElement.classList.remove(this._setting.inactiveButtonClass);
-       this._buttonElement.removeAttribute("disabled");
-     }
-   };   
- };
+
+  _addClassError(inputElement) {
+    inputElement.classList.add(this._setting.inputErrorClass);
+  };
+
+  _removeClassError(inputElement) {
+    inputElement.classList.remove(this._setting.inputErrorClass);
+  };
+
+  _addValidationErrors(errorElement, errorMessage) {
+    errorElement.classList.add(this._setting.errorClass);
+    errorElement.textContent = errorMessage;
+  };
+
+  _removeValidationErrors(errorElement) {
+    errorElement.textContent = ''
+    errorElement.classList.remove(this._setting.errorClass);
+  };
+
+  _toggleButtonState() {
+    this._buttonElement.disabled = this._hasInvalidInput();
+    if (this._hasInvalidInput()) {
+      this._buttonElement.classList.add(this._setting.inactiveButtonClass);
+      // this._buttonElement.setAttribute("disabled", true);
+    } else {
+      this._buttonElement.classList.remove(this._setting.inactiveButtonClass);
+      // this._buttonElement.removeAttribute("disabled");
+    }
+  };
+  hideActivBtn(){
+    this._toggleButtonState();
+  }
+};
