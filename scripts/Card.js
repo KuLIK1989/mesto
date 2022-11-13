@@ -58,4 +58,5 @@ export class Card {
       imageOpen.alt = this._name;
       openPopup(popupImage);
    };
+
 }

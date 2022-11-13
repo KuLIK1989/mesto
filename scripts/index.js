@@ -44,7 +44,7 @@ function handleSubmitItem(evt) {
    const card = new Card({ name: inputCardName.value, link: inputCardLink.value }, '.template_type_deafault');
    card.renderCard(container);
    evt.target.reset();
-   cardValidation.hideActivBtn();
+   cardValidation.hideActiveBtn();
    closePopup(cardsPopup);
 };
 
@@ -54,7 +54,7 @@ function handleProfileFormSubmit(evt) {
    userName.textContent = nameInput.value;
    aboutUser.textContent = jobInput.value;
    evt.target.reset();
-   profileValidation.hideActivBtn();
+   profileValidation.hideActiveBtn();
    closePopup(profilePopup);
 }
 
