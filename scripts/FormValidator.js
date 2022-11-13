@@ -67,13 +67,13 @@ export class FormValidator {
     this._buttonElement.disabled = this._hasInvalidInput();
     if (this._hasInvalidInput()) {
       this._buttonElement.classList.add(this._setting.inactiveButtonClass);
-      // this._buttonElement.setAttribute("disabled", true);
+      this._buttonElement.setAttribute("disabled", true);
     } else {
       this._buttonElement.classList.remove(this._setting.inactiveButtonClass);
-      // this._buttonElement.removeAttribute("disabled");
+      this._buttonElement.removeAttribute("disabled");
     }
   };
-  hideActivBtn(){
+  hideActiveBtn() {
     this._toggleButtonState();
   }
 };
