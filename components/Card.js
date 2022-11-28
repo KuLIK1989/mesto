@@ -1,13 +1,15 @@
-import { openPopup } from "./index.js";
-import { popupImage } from "./index.js";
-import { imageOpen } from "./index.js";
-import { imageTitle } from "./index.js";
+import { openPopup } from "../pages/index.js";
+import { popupImage } from "../pages/index.js";
+import { imageOpen } from "../pages/index.js";
+import { imageTitle } from "../pages/index.js";
 
 export class Card {
-   constructor(data, templateSelector) {
+   constructor(data, templateSelector, handleCardClick) {
       this._name = data.name;
       this._link = data.link;
       this._templateSelector = templateSelector;
+      this._handleCardClick = handleCardClick;
+      
 
    }
    _getTemplate() {
@@ -42,8 +44,8 @@ export class Card {
          this._deleteCard();
       })
       this._element.querySelector('.card__image').addEventListener('click', () => {
-         this._showPopup();
-      })
+         this._handleCardClick({'name':this._name, 'link':this._link});
+      });
    }
    _toggleLike() {
       this._element.querySelector('.card__button-like').classList.toggle('card__button-like_active');

@@ -1,7 +1,8 @@
-import { Card } from "./Card.js"
-import { initialCards } from "./initialCards.js";
-import { FormValidator } from "./FormValidator.js"
-import { setting } from "./setting.js"
+import { Card } from "../components/Card.js"
+import { initialCards, initialCards } from "../utils/initialCards.js";
+import { FormValidator } from "../components/FormValidator.js"
+import setting from "../utils/setting.js"
+import Section from "../components/Section.js";
 
 //!все popup 
 const popUps = document.querySelectorAll('.popup');
@@ -29,14 +30,26 @@ export const imageOpen = popupImage.querySelector('.popup__image');
 export const imageTitle = popupImage.querySelector('.popup__description')
 
 //!Рендер карточек из обьекта intitialCards
-const render = () => {
-   initialCards.forEach((item) => {
-      const card = new Card(item, '.template_type_deafault');
-      card.renderCard(container)
+const initialCardsList = new Section({
+   items: initialCards,
+   renderer: data => {
+      initialCardsList.addItem()
+   }
+})
 
-   });
-};
-render();
+function handleCardClick(data) {popupBigPic.} //! дписать модуль попапа
+
+function createNewCard (data) {
+   return new Card (data, setting.templateCardSelector, handleCardClick).generateCard();
+}
+// const render = () => {
+//    initialCards.forEach((item) => {
+//       const card = new Card(item, '.template_type_deafault');
+//       card.renderCard(container)
+
+//    });
+// };
+// render();
 
 //!Создание карточки через popup
 function handleSubmitItem(evt) {

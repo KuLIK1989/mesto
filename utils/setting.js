@@ -5,4 +5,5 @@ export const setting = {
    inactiveButtonClass: 'form__save-button_disabled',
    inputErrorClass: 'form__item_error',
    errorClass: 'error_visible',
+   templateCardSelector: '#card',
 }
