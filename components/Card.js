@@ -1,4 +1,4 @@
-import { openPopup } from "../pages/index.js";
+// import { openPopup } from "../pages/index.js";
 import { popupImage } from "../pages/index.js";
 import { imageOpen } from "../pages/index.js";
 import { imageTitle } from "../pages/index.js";

@@ -1,12 +1,11 @@
-import { Popup } from "../components/Popup.js";
 import { Card } from "../components/Card.js"
 import { initialCards } from "../utils/initialCards.js";
 import { FormValidator } from "../components/FormValidator.js"
-import setting from "../utils/setting.js"
+import { setting } from "../utils/setting.js"
 import Section from "../components/Section.js";
-import {UserInfo} from "../components/UserInfo.js"
-import {PopupWithImage} from "../components/PopupWithImage.js"
-import {PopupWithForm} from "../components/PopupWithForm.js"
+import { UserInfo } from "../components/UserInfo.js"
+import { PopupWithImage } from "../components/PopupWithImage.js"
+import { PopupWithForm } from "../components/PopupWithForm.js"
 
 // import "../pages/index.css";
 
@@ -35,6 +34,14 @@ export const popupImage = document.querySelector('#popup-image');
 export const imageOpen = popupImage.querySelector('.popup__image');
 export const imageTitle = popupImage.querySelector('.popup__description')
 
+
+
+
+function handleCardClick(data) { popupBigPic.open(data) }
+function createNewCard(data) {
+   return new Card(data, setting.templateCardSelector, handleCardClick).generateCard();
+}
+
 //!Рендер карточек из обьекта intitialCards
 const initialCardsList = new Section({
    items: initialCards,
@@ -44,14 +51,11 @@ const initialCardsList = new Section({
 }, '.cards'
 );
 initialCardsList.renderItem();
+
+//!экземпляр попапа картинки
 const popupBigPic = new PopupWithImage('.popup_type_image');
 popupBigPic.setEventListeners();
 
-function handleCardClick(data) {popupBigPic.open(data)}
-
-function createNewCard(data) {
-   return new Card(data, setting.templateCardSelector, handleCardClick).generateCard();
-}
 // const render = () => {
 //    initialCards.forEach((item) => {
 //       const card = new Card(item, '.template_type_deafault');
@@ -60,8 +64,10 @@ function createNewCard(data) {
 //    });
 // };
 // render();
+//!Экземпляр попапа cards и создание карточки через него
+const popupAddCards = new PopupWithForm('.popup_type_cards');
+popupAddCards.setEventListeners();
 
-//!Создание карточки через popup
 // function handleSubmitItem(evt) {
 //    evt.preventDefault();
 //    const card = new Card({ name: inputCardName.value, link: inputCardLink.value }, '.template_type_deafault');
