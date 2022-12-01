@@ -1,8 +1,14 @@
+import { Popup } from "../components/Popup.js";
 import { Card } from "../components/Card.js"
-import { initialCards, initialCards } from "../utils/initialCards.js";
+import { initialCards } from "../utils/initialCards.js";
 import { FormValidator } from "../components/FormValidator.js"
 import setting from "../utils/setting.js"
 import Section from "../components/Section.js";
+import {UserInfo} from "../components/UserInfo.js"
+import {PopupWithImage} from "../components/PopupWithImage.js"
+import {PopupWithForm} from "../components/PopupWithForm.js"
+
+// import "../pages/index.css";
 
 //!все popup 
 const popUps = document.querySelectorAll('.popup');
@@ -33,14 +39,18 @@ export const imageTitle = popupImage.querySelector('.popup__description')
 const initialCardsList = new Section({
    items: initialCards,
    renderer: data => {
-      initialCardsList.addItem()
+      initialCardsList.addItem(createNewCard(data));
    }
-})
+}, '.cards'
+);
+initialCardsList.renderItem();
+const popupBigPic = new PopupWithImage('.popup_type_image');
+popupBigPic.setEventListeners();
 
-function handleCardClick(data) {popupBigPic.} //! дписать модуль попапа
+function handleCardClick(data) {popupBigPic.open(data)}
 
-function createNewCard (data) {
-   return new Card (data, setting.templateCardSelector, handleCardClick).generateCard();
+function createNewCard(data) {
+   return new Card(data, setting.templateCardSelector, handleCardClick).generateCard();
 }
 // const render = () => {
 //    initialCards.forEach((item) => {
@@ -52,24 +62,24 @@ function createNewCard (data) {
 // render();
 
 //!Создание карточки через popup
-function handleSubmitItem(evt) {
-   evt.preventDefault();
-   const card = new Card({ name: inputCardName.value, link: inputCardLink.value }, '.template_type_deafault');
-   card.renderCard(container);
-   evt.target.reset();
-   cardValidation.hideActiveBtn();
-   closePopup(cardsPopup);
-};
+// function handleSubmitItem(evt) {
+//    evt.preventDefault();
+//    const card = new Card({ name: inputCardName.value, link: inputCardLink.value }, '.template_type_deafault');
+//    card.renderCard(container);
+//    evt.target.reset();
+//    cardValidation.hideActiveBtn();
+//    closePopup(cardsPopup);
+// };
 
 //!Изменение имя пользователя и статуса
-function handleProfileFormSubmit(evt) {
-   evt.preventDefault();
-   userName.textContent = nameInput.value;
-   aboutUser.textContent = jobInput.value;
-   evt.target.reset();
-   profileValidation.hideActiveBtn();
-   closePopup(profilePopup);
-}
+// function handleProfileFormSubmit(evt) {
+//    evt.preventDefault();
+//    userName.textContent = nameInput.value;
+//    aboutUser.textContent = jobInput.value;
+//    evt.target.reset();
+//    profileValidation.hideActiveBtn();
+//    closePopup(profilePopup);
+// }
 
 //!Создание экземпляра класса
 const profileValidation = new FormValidator(setting, profileForm);
@@ -83,35 +93,35 @@ profileForm.addEventListener('submit', handleProfileFormSubmit);
 cardsForm.addEventListener('submit', handleSubmitItem);
 
 //!Общие функции
-popUps.forEach((popup) => {
-   popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
-         closePopup(popup)
-      }
-      if (evt.target.classList.contains('popup__close-button')) {
-         closePopup(popup)
-      }
-   })
-})
+// popUps.forEach((popup) => {
+//    popup.addEventListener('mousedown', (evt) => {
+//       if (evt.target.classList.contains('popup_opened')) {
+//          closePopup(popup)
+//       }
+//       if (evt.target.classList.contains('popup__close-button')) {
+//          closePopup(popup)
+//       }
+//    })
+// })
 ///
-export function openPopup(popup) {
-   popup.classList.add('popup_opened');
-   document.addEventListener('keydown', closePopupByEscape);
-};
+// export function openPopup(popup) {
+//    popup.classList.add('popup_opened');
+//    document.addEventListener('keydown', closePopupByEscape);
+// };
 
-popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
-profileOpenButton.addEventListener('click', () => {
-   openPopup(profilePopup)
-   nameInput.value = userName.textContent;
-   jobInput.value = aboutUser.textContent;
+// popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
+// profileOpenButton.addEventListener('click', () => {
+//    openPopup(profilePopup)
+//    nameInput.value = userName.textContent;
+//    jobInput.value = aboutUser.textContent;
 
-});
-function closePopup(popup) {
-   popup.classList.remove('popup_opened');
-   document.removeEventListener('keydown', closePopupByEscape);
-}
-function closePopupByEscape(evt) {
-   if (evt.key === "Escape") {
-      closePopup(document.querySelector('.popup_opened'))
-   }
-}
+// });
+// function closePopup(popup) {
+//    popup.classList.remove('popup_opened');
+//    document.removeEventListener('keydown', closePopupByEscape);
+// }
+// function closePopupByEscape(evt) {
+//    if (evt.key === "Escape") {
+//       closePopup(document.querySelector('.popup_opened'))
+//    }
+// }

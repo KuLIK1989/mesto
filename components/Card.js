@@ -9,7 +9,7 @@ export class Card {
       this._link = data.link;
       this._templateSelector = templateSelector;
       this._handleCardClick = handleCardClick;
-      
+
 
    }
    _getTemplate() {
@@ -44,7 +44,7 @@ export class Card {
          this._deleteCard();
       })
       this._element.querySelector('.card__image').addEventListener('click', () => {
-         this._handleCardClick({'name':this._name, 'link':this._link});
+         this._handleCardClick({ 'name': this._name, 'link': this._link });
       });
    }
    _toggleLike() {
