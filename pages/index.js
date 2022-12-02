@@ -34,50 +34,97 @@ export const popupImage = document.querySelector('#popup-image');
 export const imageOpen = popupImage.querySelector('.popup__image');
 export const imageTitle = popupImage.querySelector('.popup__description')
 
+const cardsList = document.querySelector('.cards');
 
-
-
-function handleCardClick(data) { popupBigPic.open(data) }
-function createNewCard(data) {
-   return new Card(data, setting.templateCardSelector, handleCardClick).generateCard();
-}
-
-//!Рендер карточек из обьекта intitialCards
-const initialCardsList = new Section({
+const cardList = new Section({
    items: initialCards,
    renderer: data => {
-      initialCardsList.addItem(createNewCard(data));
+      cardList.addItem(createNewCard(data));
    }
-}, '.cards'
+},
+'.cards'
 );
-initialCardsList.renderItem();
+cardList.renderItem();
 
-//!экземпляр попапа картинки
-const popupBigPic = new PopupWithImage('.popup_type_image');
-popupBigPic.setEventListeners();
+const popupFullScreen = new PopupWithImage('.popup_type_image');
+popupFullScreen.setEventListeners();
 
-// const render = () => {
-//    initialCards.forEach((item) => {
-//       const card = new Card(item, '.template_type_deafault');
-//       card.renderCard(container)
+function handleCardClick (data) {popupFullScreen.open(data)};
 
-//    });
-// };
-// render();
-//!Экземпляр попапа cards и создание карточки через него
-const popupAddCards = new PopupWithForm('.popup_type_cards');
-popupAddCards.setEventListeners();
+function createNewCard(data) {
+   return new Card(data, setting.templateCardSelector, handleCardClick).generateCard();
+};
+function addCard(card) {
+   cardsList.prepend(card);
+}
+const popupAddCard = new PopupWithForm(handleSubmitCard, '.popup_type_cards');
+function handleSubmitCard(evt, data) {
+   evt.preventDafault();
+   addCard(createNewCard(data));
+   popupAddCard.close();
+}
+popupAddCard.setEventListeners();
 
-// function handleSubmitItem(evt) {
-//    evt.preventDefault();
-//    const card = new Card({ name: inputCardName.value, link: inputCardLink.value }, '.template_type_deafault');
-//    card.renderCard(container);
-//    evt.target.reset();
-//    cardValidation.hideActiveBtn();
-//    closePopup(cardsPopup);
-// };
+function openPopupCard(){
+   popupAddCard.open();
+}
+const buttonOpenAddCard = document.querySelector('.profile__add-button');
+buttonOpenAddCard.addEventListener('click', openPopupCard);
 
-//!Изменение имя пользователя и статуса
+
+
+
+
+
+// //!Рендер карточек из обьекта intitialCards
+// const initialCardsList = new Section({
+//    items: initialCards,
+//    renderer: data => {
+//       initialCardsList.addItem(createNewCard(data));
+//    }
+// }, '.cards'
+// );
+// initialCardsList.renderItem();
+
+// function handleCardClick(data) { popupBigPic.open(data) }
+// function createNewCard(data) {
+//    return new Card(data, setting.templateCardSelector, handleCardClick).generateCard();
+// }
+
+// //!экземпляр попапа картинки
+// const popupBigPic = new PopupWithImage('.popup_type_image');
+// popupBigPic.setEventListeners();
+
+// // const render = () => {
+// //    initialCards.forEach((item) => {
+// //       const card = new Card(item, '.template_type_deafault');
+// //       card.renderCard(container)
+
+// //    });
+// // };
+// // render();
+// //!
+// const cardsList = document.querySelector('.cards');
+
+// function addcard(card) {
+//    cardsList.prepend(card)
+// }
+// //!Экземпляр попапа cards и создание карточки через него
+// const popupAddCards = new PopupWithForm('.popup_type_cards',
+// function callBackSubmitForm (inputValues) {
+//    initialCardsList.addItem(createNewCard({
+//       name:inputValues.
+//    }))   
+// }
+// );
+// // function handleSubmitItem(evt, data) {
+// //    evt.preventDefault();
+// //    addcard(createNewCard(data));
+// //    popupAddCards.close();
+// // };
+// popupAddCards.setEventListeners();
+
+// //!Изменение имя пользователя и статуса
 // function handleProfileFormSubmit(evt) {
 //    evt.preventDefault();
 //    userName.textContent = nameInput.value;
@@ -87,47 +134,52 @@ popupAddCards.setEventListeners();
 //    closePopup(profilePopup);
 // }
 
-//!Создание экземпляра класса
-const profileValidation = new FormValidator(setting, profileForm);
-const cardValidation = new FormValidator(setting, cardsForm);
+// //!Создание экземпляра класса
+// const profileValidation = new FormValidator(setting, profileForm);
+// const cardValidation = new FormValidator(setting, cardForm);
 
-profileValidation.enableValidation();
-cardValidation.enableValidation();
+// profileValidation.enableValidation();
+// cardValidation.enableValidation();
 
-//!Слушатели на формы карточек и профиля
-profileForm.addEventListener('submit', handleProfileFormSubmit);
-cardsForm.addEventListener('submit', handleSubmitItem);
+// //!Слушатели на формы карточек и профиля
+// const cardPopup = document.querySelector('.popup_type_cards');
+// const cardForm = cardPopup.querySelector('.form');
+// // profileForm.addEventListener('submit', handleProfileFormSubmit);
+// // cardsForm.addEventListener('submit', handleSubmitItem);
 
-//!Общие функции
-// popUps.forEach((popup) => {
-//    popup.addEventListener('mousedown', (evt) => {
-//       if (evt.target.classList.contains('popup_opened')) {
-//          closePopup(popup)
-//       }
-//       if (evt.target.classList.contains('popup__close-button')) {
-//          closePopup(popup)
-//       }
-//    })
-// })
-///
-// export function openPopup(popup) {
-//    popup.classList.add('popup_opened');
-//    document.addEventListener('keydown', closePopupByEscape);
-// };
-
-// popupOpenBtnCard.addEventListener('click', () => { openPopup(cardsPopup) });
-// profileOpenButton.addEventListener('click', () => {
-//    openPopup(profilePopup)
-//    nameInput.value = userName.textContent;
-//    jobInput.value = aboutUser.textContent;
-
-// });
-// function closePopup(popup) {
-//    popup.classList.remove('popup_opened');
-//    document.removeEventListener('keydown', closePopupByEscape);
+// //!Общие функции
+// // popUps.forEach((popup) => {
+// //    popup.addEventListener('mousedown', (evt) => {
+// //       if (evt.target.classList.contains('popup_opened')) {
+// //          closePopup(popup)
+// //       }
+// //       if (evt.target.classList.contains('popup__close-button')) {
+// //          closePopup(popup)
+// //       }
+// //    })
+// // })
+// ///
+// // export function openPopup(popup) {
+// //    popup.classList.add('popup_opened');
+// //    document.addEventListener('keydown', closePopupByEscape);
+// // };
+// function openPopupCard(){
+//    popupAddCards.open()
 // }
-// function closePopupByEscape(evt) {
-//    if (evt.key === "Escape") {
-//       closePopup(document.querySelector('.popup_opened'))
-//    }
-// }
+
+// popupOpenBtnCard.addEventListener('click', openPopupCard);
+// // profileOpenButton.addEventListener('click', () => {
+// //    openPopup(profilePopup)
+// //    nameInput.value = userName.textContent;
+// //    jobInput.value = aboutUser.textContent;
+
+// // });
+// // function closePopup(popup) {
+// //    popup.classList.remove('popup_opened');
+// //    document.removeEventListener('keydown', closePopupByEscape);
+// // }
+// // function closePopupByEscape(evt) {
+// //    if (evt.key === "Escape") {
+// //       closePopup(document.querySelector('.popup_opened'))
+// //    }
+// // }

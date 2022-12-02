@@ -54,11 +54,11 @@ export class Card {
       this._element.remove()
       this._element = null;
    };
-   _showPopup() {
-      imageTitle.textContent = this._name;
-      imageOpen.src = this._link;
-      imageOpen.alt = this._name;
-      openPopup(popupImage);
-   };
+   // _showPopup() {
+   //    imageTitle.textContent = this._name;
+   //    imageOpen.src = this._link;
+   //    imageOpen.alt = this._name;
+   //    openPopup(popupImage);
+   // };
 
 }
