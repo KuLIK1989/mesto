@@ -46,10 +46,10 @@ const cardList = new Section({
 );
 cardList.renderItem();
 
-const popupFullScreen = new PopupWithImage('.popup_type_image');
-popupFullScreen.setEventListeners();
+const popupBigPhoto = new PopupWithImage('.popup_type_image');
+popupBigPhoto.setEventListeners();
 
-function handleCardClick (data) {popupFullScreen.open(data)};
+function handleCardClick (data) {popupBigPhoto.open(data)};
 
 function createNewCard(data) {
    return new Card(data, setting.templateCardSelector, handleCardClick).generateCard();
@@ -57,7 +57,7 @@ function createNewCard(data) {
 function addCard(card) {
    cardsList.prepend(card);
 }
-const popupAddCard = new PopupWithForm(handleSubmitCard, '.popup_type_cards');
+const popupAddCard = new PopupWithForm('.popup_type_cards', handleSubmitCard);
 function handleSubmitCard(evt, data) {
    evt.preventDafault();
    addCard(createNewCard(data));
