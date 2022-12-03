@@ -74,11 +74,13 @@ buttonOpenAddCard.addEventListener('click', openPopupCard);
 
 
 
-
+const userInfo = new UserInfo('.profile__name', '.profile__status');
 const popupEditProfile = new PopupWithForm('.popup_type_profile', submitProfile);
+
 function submitProfile(evt, data) {
-   evt.preventDafault();
-   UserInfo.setUserInfo(data)
+   evt.preventDefault();
+   userInfo.setUserInfo(data)
+   profileValidation.hideActiveBtn();
    popupEditProfile.close();
 }
 popupEditProfile.setEventListeners();
@@ -91,6 +93,7 @@ const inputProfileName = popupProfileForm.querySelector('.form__item_type_name')
 const inputProfileStatus = popupProfileForm.querySelector('.form__item_type_status');
 
 
+
 function openPopupProfile() {
    const profileInfo = userInfo.getUserInfo()
    inputProfileName.value = profileInfo.username;
@@ -99,7 +102,7 @@ function openPopupProfile() {
 };
 
 
-const userInfo = new UserInfo('.profile__name', '.profile__status');
+
 
 const profile = document.querySelector('.profile');
 const btnOpenProfile = profile.querySelector('.profile__edit-button')
