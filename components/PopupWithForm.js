@@ -1,4 +1,4 @@
-import { Popup } from "./Popup.js"
+import  Popup  from "./Popup.js"
 import { setting } from "../utils/setting.js";
 
 export class PopupWithForm extends Popup {

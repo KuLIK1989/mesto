@@ -32,10 +32,10 @@
          <p class="footer__copyright">&copy;2020 Mesto Russia</p>
       </footer>
 
-      <template id="card" class="template template_type_deafault">
+      <template id="card" class="template">
          <div class="card">
             <button class="card__button-trash" type="button"></button>
-            <img alt="фото" class="card__image">
+            <img alt="фото" src="#" class="card__image">
             <div class="card__name">
                <h3 class="card__title"></h3>
                <button type="button" class="card__button-like"></button>
@@ -78,13 +78,13 @@
                <fieldset class="form__edit">
 
                   <label class="form__field">
-                     <input required minlength="2" maxlength="30" class="form__item" id="name-place" name="name-place"
+                     <input required minlength="2" maxlength="30" class="form__item" id="name-place" name="nameplace"
                         type="text" placeholder="Название">
                      <span class="error" id="name-place-error"></span>
                   </label>
 
                   <label class="form__field">
-                     <input required class="form__item" id="link-place" name="link-place" type="url"
+                     <input required class="form__item" id="link-place" name="linkplace" type="url"
                         placeholder="Ссылка на картинку">
                      <span class="error" id="link-place-error"></span>
                   </label>

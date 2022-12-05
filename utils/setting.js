@@ -6,4 +6,5 @@ export const setting = {
    inputErrorClass: 'form__item_error',
    errorClass: 'error_visible',
    templateCardSelector: '#card',
+   popupSelector: '.popup_type_cards',
 }
