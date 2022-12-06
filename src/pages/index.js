@@ -9,12 +9,6 @@ import { initialCards } from "../utils/initialCards.js";
 
 
 
-
-
-
-
-// import "../pages/index.css";
-
 //!все popup 
 const popUps = document.querySelectorAll('.popup');
 
@@ -66,6 +60,7 @@ function addCard(card) {
 const popupAddCard = new PopupWithForm('.popup_type_cards', handleSubmitCard);
 function handleSubmitCard(evt, data) {
    evt.preventDefault();
+   console.log(data)
    addCard(createNewCard(data));
    popupAddCard.close();
 }

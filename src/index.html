@@ -5,7 +5,7 @@
    <meta charset="UTF-8" />
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="stylesheet" href="./pages/index.css">
+   <link rel="stylesheet" href="../src/pages/index.css">
    <title>Место</title>
 </head>
 
@@ -78,13 +78,13 @@
                <fieldset class="form__edit">
 
                   <label class="form__field">
-                     <input required minlength="2" maxlength="30" class="form__item" id="name-place" name="nameplace"
+                     <input required minlength="2" maxlength="30" class="form__item" id="name-place" name="name"
                         type="text" placeholder="Название">
                      <span class="error" id="name-place-error"></span>
                   </label>
 
                   <label class="form__field">
-                     <input required class="form__item" id="link-place" name="linkplace" type="url"
+                     <input required class="form__item" id="link-place" name="link" type="url"
                         placeholder="Ссылка на картинку">
                      <span class="error" id="link-place-error"></span>
                   </label>
@@ -102,7 +102,6 @@
             <p class="popup__description"></p>
          </div>
       </div>
-
    </div>
    <script type="module" src="./pages/index.js"></script>
 </body>

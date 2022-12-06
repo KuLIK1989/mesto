@@ -5,6 +5,7 @@ import { imageTitle } from "../pages/index.js";
 
 export class Card {
    constructor(data, templateSelector, handleCardClick) {
+      this._data = data;
       this._name = data.name;
       this._link = data.link;
       this._templateSelector = templateSelector;
@@ -32,10 +33,10 @@ export class Card {
 
       return this._element;
    }
-   renderCard(container) {
-      const element = this.generateCard()
-      container.prepend(element)
-   }
+   // renderCard(container) {
+   //    const element = this.generateCard()
+   //    container.prepend(element)
+   // }
    _setEventListeners() {
       this._element.querySelector('.card__button-like').addEventListener('click', () => {
          this._toggleLike();
@@ -54,11 +55,11 @@ export class Card {
       this._element.remove()
       this._element = null;
    };
-   _showPopup() {
-      imageTitle.textContent = this._name;
-      imageOpen.src = this._link;
-      imageOpen.alt = this._name;
-      openPopup(popupImage);
-   };
+   // _showPopup() {
+   //    imageTitle.textContent = this._name;
+   //    imageOpen.src = this._link;
+   //    imageOpen.alt = this._name;
+   //    openPopup(popupImage);
+   // };
 
 }
