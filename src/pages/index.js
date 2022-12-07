@@ -7,6 +7,8 @@ import { UserInfo } from "../components/UserInfo.js"
 import { PopupWithImage } from "../components/PopupWithImage.js"
 import { initialCards } from "../utils/initialCards.js";
 
+import './index.css';
+
 
 //!все popup 
 const popUps = document.querySelectorAll('.popup');
