@@ -1,8 +1,3 @@
-// import { openPopup } from "../pages/index.js";
-import { popupImage } from "../pages/index.js";
-import { imageOpen } from "../pages/index.js";
-import { imageTitle } from "../pages/index.js";
-
 export class Card {
    constructor(data, templateSelector, handleCardClick) {
       this._data = data;
