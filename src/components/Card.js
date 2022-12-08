@@ -5,8 +5,6 @@ export class Card {
       this._link = data.link;
       this._templateSelector = templateSelector;
       this._handleCardClick = handleCardClick;
-
-
    }
    _getTemplate() {
       const element = document
@@ -14,24 +12,19 @@ export class Card {
          .content
          .querySelector('.card')
          .cloneNode(true);
-
       return element;
    }
 
    generateCard() {
       this._element = this._getTemplate();
       this._setEventListeners();
-
       this._element.querySelector('.card__image').alt = this._name
       this._element.querySelector('.card__image').src = this._link;
       this._element.querySelector('.card__title').textContent = this._name;
 
       return this._element;
    }
-   // renderCard(container) {
-   //    const element = this.generateCard()
-   //    container.prepend(element)
-   // }
+
    _setEventListeners() {
       this._element.querySelector('.card__button-like').addEventListener('click', () => {
          this._toggleLike();
@@ -50,11 +43,4 @@ export class Card {
       this._element.remove()
       this._element = null;
    };
-   // _showPopup() {
-   //    imageTitle.textContent = this._name;
-   //    imageOpen.src = this._link;
-   //    imageOpen.alt = this._name;
-   //    openPopup(popupImage);
-   // };
-
 }

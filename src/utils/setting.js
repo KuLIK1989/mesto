@@ -7,4 +7,5 @@ export const setting = {
    errorClass: 'error_visible',
    templateCardSelector: '#card',
    popupSelector: '.popup_type_cards',
+   spanError: '.error',
 }
