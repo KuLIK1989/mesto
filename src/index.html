@@ -15,11 +15,15 @@
       </header>
       <main class="content">
          <div class="profile">
-            <img src="<%=require('./image/profile-photo.png')%>" alt="фото профиля" class="profile__avatar" />
-            <div class="profile__info">
-               <h1 class="profile__name">Жак-Ив Кусто</h1>
-               <button type="button" class="profile__edit-button"></button>
-               <p class="profile__status">Исследователь океана</p>
+            <div class="profile__change-avatar">
+               <div class="profile__edit-avatar"></div>
+               <img src="<%=require('./image/profile-photo.png')%>" alt="фото профиля" class="profile__avatar" />
+               <div class="profile__info">
+                  <h1 class="profile__name">Жак-Ив Кусто</h1>
+                  <button type="button" class="profile__edit-button"></button>
+                  <p class="profile__status">Исследователь океана</p>
+               </div>
+
             </div>
             <button type="button" class="profile__add-button"></button>
          </div>
