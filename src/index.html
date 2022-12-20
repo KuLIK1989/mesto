@@ -38,9 +38,12 @@
          <div class="card">
             <button class="card__button-trash" type="button"></button>
             <img alt="фото" src="#" class="card__image">
-            <div class="card__name">
+            <div class="card__description">
                <h3 class="card__title"></h3>
-               <button type="button" class="card__button-like"></button>
+               <div class="card__name">
+                  <button type="button" class="card__button-like"></button>
+                  <p class="card__like-counter">0</p>
+               </div>
             </div>
          </div>
       </template>
@@ -115,6 +118,15 @@
                   </label>
                </fieldset>
                <button class="form__save-button form__save-button_disabled" type="submit" disabled>Сохранить</button>
+            </form>
+         </div>
+      </div>
+      <div class="popup">
+         <div class="popup__container">
+            <button type="button" class="popup__close-button"></button>
+            <form class="form" name="confirm_form" novalidate>
+               <h3 class="form__title">Вы уверены?</h3>
+               <button class="form__save-button" type="submit">Да</button>
             </form>
          </div>
       </div>

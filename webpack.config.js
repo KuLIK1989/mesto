@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+   mode:'development',
    entry: {
       main: './src/pages/index.js'
    },
@@ -19,6 +20,7 @@ module.exports = {
       compress: true,
       port: 8080
    },
+   devtool:'inline-source-map',
    module: {
       rules: [{
          test: /\.js$/,
