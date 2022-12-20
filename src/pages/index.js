@@ -53,6 +53,13 @@ const popupEditProfile = new PopupWithForm('.popup_type_profile', function callB
    popupEditProfile.close();
 });
 popupEditProfile.setEventListeners();
+//! Изменение аватара профиля
+const btnOpenPopupAvatar = document.querySelector('.profile__edit-avatar');
+btnOpenPopupAvatar.addEventListener('click',()=>{
+   popupChangeAvatar.open()
+})
+const popupChangeAvatar = new PopupWithForm ('.popup_type_avatar')
+popupChangeAvatar.setEventListeners()
 
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupProfileForm = popupProfile.querySelector('.form')
