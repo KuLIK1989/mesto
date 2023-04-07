@@ -8,4 +8,9 @@ export const setting = {
    templateCardSelector: '#card',
    popupSelector: '.popup_type_cards',
    spanError: '.error',
+   profileNameSelector: '.profile__name',
+   profaleAboutSelector: '.profile__status',
+   profaleAvatarSelector: '.header__logo',
+   listCardsSelector: '.cards',
+   popupConfirmSelector:'.popup_type_confirm'
 }
