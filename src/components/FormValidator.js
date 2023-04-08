@@ -58,7 +58,7 @@ export class FormValidator {
   };
 
   _removeValidationErrors(errorElement) {
-    errorElement.textContent = ''
+    errorElement.textContent = "";
     errorElement.classList.remove(this._setting.errorClass);
   };
 

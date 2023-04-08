@@ -10,7 +10,8 @@ export const setting = {
    spanError: '.error',
    profileNameSelector: '.profile__name',
    profaleAboutSelector: '.profile__status',
-   profaleAvatarSelector: '.header__logo',
+   profaleAvatarSelector: '.profile__avatar',
    listCardsSelector: '.cards',
-   popupConfirmSelector:'.popup_type_confirm'
+   popupConfirmSelector: '.popup_type_confirm',
+   // popupProfileSelector: '.popup_type_profile'
 }

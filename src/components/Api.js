@@ -27,8 +27,7 @@ export class Api {
    }
    setUserInfo(info) {
       return fetch(`${this._config.url}/users/me`, {
-         
-         method: "PATH",
+         method: "PATCH",
          headers: this._config.headers,
          body: JSON.stringify(info)
       })
@@ -42,7 +41,7 @@ export class Api {
       })
          .then(this._error)
    }
-   toggleLikeCard({idCard, methodCardLike }) {
+   toggleLikeCard({ idCard, methodCardLike }) {
       return fetch(`${this._config.url}/cards/${idCard}/likes`, {
          method: methodCardLike,
          headers: this._config.headers

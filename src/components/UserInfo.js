@@ -1,5 +1,5 @@
 export class UserInfo {
-   constructor( userNameSelector, aboutUserSelector, userAvatarSelector ) {
+   constructor(userNameSelector, aboutUserSelector, userAvatarSelector) {
       this._userName = document.querySelector(userNameSelector);
       this._aboutUser = document.querySelector(aboutUserSelector);
       this._userAvatar = document.querySelector(userAvatarSelector);
@@ -12,14 +12,14 @@ export class UserInfo {
          myId: this._myId
       };
    };
-   setUserInfo({ name, about, myId = ""}) {
+   setUserInfo({ name, about, myId = "" }) {
       if (name) {
          this._userName.textContent = name;
       };
       if (about) {
          this._aboutUser.textContent = about;
       };
-      if (!this._myId) {this._myId = myId}
+      if (!this._myId) { this._myId = myId }
       // this._userName.textContent = data.username;
       // this._aboutUser.textContent = data.aboutuser;
    }
