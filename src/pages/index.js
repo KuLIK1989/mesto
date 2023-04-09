@@ -69,6 +69,8 @@ function handleSubmitCard(evt, data, buttonSubmitText) {
       })
       .then(() => {
          popupAddCard.close();
+      })
+      .finally(() => {
          renderLoading(cardPopup, false, buttonSubmitText)
       })
       .catch((error) => { console.log(`возникла ошибка попап карточки ,${error}`) })
@@ -113,6 +115,8 @@ function handleSubmitProfile(evt, data, buttonSubmitText) {
       })
       .then(() => {
          popupEditProfile.close();
+      })
+      .finally(() => {
          renderLoading(popupProfile, false, buttonSubmitText);
       })
       .catch((error) => { console.log(`возникла ошибка профиля,${error}`) })
@@ -139,6 +143,8 @@ function handleSubmitAvatar(evt, link, buttonSubmitText) {
       })
       .then(() => {
          changeAvatar.close()
+      })
+      .finally(() => {
          renderLoading(avatarPopup, false, buttonSubmitText)
       })
       .catch((error) => { console.log(`возникла ошибка аватара,${error}`) })
